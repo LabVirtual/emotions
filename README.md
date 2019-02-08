@@ -1,8 +1,8 @@
-# Detecção de Emoções
+# API Emotion Detection
 
-A ideia é realizarmos a classificação do estado emoção com uma imagem dada de entrada e retornar uma string da emoção detectada. A partir disto o php o resultado processado.
+The idea is to provide an emotion rating API with a given input image and return a JSON of the detected emotions.
 
-São 7 possíveis de emoções:
+There are 7 possible emotions:
 
     NEUTRAL
     HAPPINES
@@ -12,23 +12,62 @@ São 7 possíveis de emoções:
     SURPRISE
     DISGUST
 
-## Dependências do projeto
 
-This project depends on [Python](https://www.python.org/) (>= 3.5) and the following packages:
+## Create virtual environment for the application
 
-- [OpenCV](http://opencv.org/) (>= 3.1.0)
-- [dlib](http://dlib.net/) (>= 19.1.0)
-- [scikit-learn](http://scikit-learn.org/) (>= 0.18.1)
-- [scikit-image](http://scikit-image.org/) (>= 0.12.0)
-- [Numpy](http://www.numpy.org/) (>= 1.14.5)
+* pip install venv
+* python3 -m venv venv
+* . venv/bin/activate (ON environment)
+* deactivate (OFF environment)
 
 
+## Install Dlib for Python
+
+Tutorial: https://www.youtube.com/watch?v=h0Uidh-sq9M&t=43s
+
+* sudo apt-get update -y
+* sudo apt-get install build-essential cmake
+* sudo apt-get install libgtk-3-dev
+* sudo apt-get install libboost-all-dev
+
+Repositorio GitHub Dlib: https://github.com/davisking/dlib
 
 
+## Install dependencies
 
-## Uso
+pip install -r requirements.txt
 
-Use para executar o seguinte comando:
-    >> python3 main.py --image < diretorio da imagem>
+* Update requirements:
+pip freeze > requirements.txt
 
 
+## Up server API
+
+* python api.py
+
+
+## Use API
+
+* Local file:
+Use requests GET in http://localhost/api/local
+JSON REQUESTS: {"path_file": PATH OF FILE IN FOULDER }
+
+* Upload file:
+Use requests GET in http://localhost/api/upload
+Send file with key = 'file'
+
+* JSON RESPONSE: 
+{
+    "src": "/home/guilherme/Imagens/happy.jpeg",
+    "bigger_emotion": {
+        "emotion": "happy",
+        "score": 85
+    },
+    "NEUTRAL": 5,
+    "HAPPINES": 85,
+    "SADNESS": 2,
+    "ANGER": 1,
+    "FEAR": 5,
+    "SURPRISE": 10,
+    "DISGUST": 6
+}
