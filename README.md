@@ -21,7 +21,7 @@ There are 7 possible emotions:
 * deactivate (OFF environment)
 
 
-## Install Dlib for Python
+## Install lib of dependencies
 
 Tutorial: https://www.youtube.com/watch?v=h0Uidh-sq9M&t=43s
 
@@ -49,14 +49,22 @@ pip freeze > requirements.txt
 ## Use API
 
 * Local file:
-Use requests GET in http://localhost/api/local
-JSON REQUESTS: {"path_file": PATH OF FILE IN FOULDER }
+Use requests GET in http://localhost:5000/api/local
+JSON REQUESTS: 
+```json
+{
+    "path_file": "[PATH OF FILE IN FOULDER]" 
+}
+
+```
 
 * Upload file:
-Use requests GET in http://localhost/api/upload
+Use requests GET in http://localhost:5000/api/upload
 Send file with key = 'file'
 
 * JSON RESPONSE: 
+
+```json
 {
     "src": "/home/guilherme/Imagens/happy.jpeg",
     "bigger_emotion": {
@@ -71,3 +79,5 @@ Send file with key = 'file'
     "SURPRISE": 10,
     "DISGUST": 6
 }
+
+```
